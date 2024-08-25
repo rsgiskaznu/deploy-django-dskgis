@@ -57,4 +57,8 @@ docker exec -it django-dskgis_web_1 python manage.py createsuperuser
 
 # API Endpoints
 
-- `/api/v1/` - The root endpoint
+- `/api/v1/accounts/` - User accounts API
+- `/api/v1/token/`  - Obtain JWT token API
+- `/api/v1/token/refresh/` - Refresh JWT token API
+- `/api/v1/token/verify/` - Verify JWT token API
+- `/api/v1/contents` - Contents API
