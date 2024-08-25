@@ -1,1 +1,4 @@
-# deploy-django-dskgis
+# Instructions for deploying `django-dskgis` 
+
+
+
