@@ -21,8 +21,8 @@ cd deploy-django-dskgis
 
 3. Add the following environment variables to the `.env` file:
    ( Create a .env file in the root directory of the project and add fill out the following environment variables )
-NOTE: Credentials are for testing purposes only. Do not use them in production.
-NOTE: Replace the `AWS_S3_ENDPOINT_URL` with the IP address of your machine 
+   NOTE: Credentials are for testing purposes only. Do not use them in production.
+   NOTE: Replace the `AWS_S3_ENDPOINT_URL` with the IP address of your machine 
 ```bash
 ADMIN_USER_EMAIL='admin@example.com'
 ADMIN_USER_PASSWD='admin123456'
@@ -38,7 +38,7 @@ POSTGRES_PASSWORD='djazz'
 STAFF_USER_EMAIL='staff@example.com'
 STAFF_USER_PASSWD='staff123456'
 ```
-  
+
 
 4. Run the following command to deploy the application:
 ```bash
@@ -50,15 +50,28 @@ docker-compose up -d
 ```
 which will run the application in the background.
 
-5. Open a new terminal window and run the following command to create a superuser:
+5. Open a new terminal window and run the following commands:
+
 ```bash
-docker exec -it django-dskgis_web_1 python manage.py createsuperuser
+docker compose exec -it djazz python manage.py collectstatic --no-input
+```
+```bash
+docker compose exec -it djazz python manage.py createsuperuser
 ```
 
-# API Endpoints
+## Endpoints and usage: 
 
-- `/api/v1/accounts/` - User accounts API
-- `/api/v1/token/`  - Obtain JWT token API
-- `/api/v1/token/refresh/` - Refresh JWT token API
-- `/api/v1/token/verify/` - Verify JWT token API
-- `/api/v1/contents` - Contents API
+This project follows OpenAPI standards, check for usage and endpoints at: http://127.0.0.1:8000
+
+![CleanShot 2024-08-26 at 12.32.25](https://raw.githubusercontent.com/azataiot/images/master/2024/08/upgit_20240826_1724664748.png)
+
+# FAQ
+
+There is 404 or 403 error serving the static files. What should i do ? 
+
+Is such case, it might be because of the following: 
+
+1. Your machine already using port 9000 and port 9001 for something else. Stop that container and restart this.
+2. Your minio bucket needs to be public, go to https://127.0.0.1:9000 and login with `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`, change the bucket Access policy to Public (as shown below in the picture)
+
+![CleanShot 2024-08-26 at 12.30.54](https://raw.githubusercontent.com/azataiot/images/master/2024/08/upgit_20240826_1724664694.png)
