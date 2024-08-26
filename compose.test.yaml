@@ -1,0 +1,13 @@
+# --------------
+# Docker Compose
+# --------------
+name: "dskgis"
+services:
+
+  djazz:
+    restart: always
+    image: azataiot/django-dskgis:latest
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
