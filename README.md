@@ -11,7 +11,7 @@ Steps to deploy:
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/azataiot/deploy-django-dskgis.git
+git clone https://github.com/Farabi-University-Remote-Sensing-Center/deploy-django-dskgis
 ```
 
 2. Change the directory to the cloned repository:
